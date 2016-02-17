@@ -15,7 +15,7 @@ public class testStartState {
 	@Test
 	public void testInitialization() {
 		State testState = new StartState();
-		assertEquals(0, testState.getV());
-		assertEquals(1, testState.getS());
+		assertEquals(0, testState.getValue());
+		assertEquals(1, testState.getSign());
 	}
 }
