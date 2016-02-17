@@ -5,4 +5,8 @@
  */
 public interface State {
 
+	int getSign();
+
+	int getValue();
+
 }
