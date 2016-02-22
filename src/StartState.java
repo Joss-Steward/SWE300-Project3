@@ -3,6 +3,6 @@
  * @author Drew Rife
  *
  */
-public class StartState implements State{
+public class StartState extends BaseState{
 
 }

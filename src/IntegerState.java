@@ -3,6 +3,6 @@
  * @author Drew Rife
  *
  */
-public class IntegerState implements State {
+public class IntegerState extends BaseState {
 
 }
