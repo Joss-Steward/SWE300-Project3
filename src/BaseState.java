@@ -8,9 +8,9 @@
  */
 public abstract class BaseState implements State {
 
-	private int sign;
-	private int value;
-	private double point;
+	protected int sign;
+	protected int value;
+	protected double point;
 	
 	public BaseState() {
 		sign = 1;
