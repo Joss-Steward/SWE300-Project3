@@ -7,7 +7,7 @@ public interface State {
 
 	int getSign();
 
-	int getValue();
+	double getValue();
 	
 	double getPoint();
 	

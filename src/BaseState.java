@@ -9,7 +9,7 @@
 public abstract class BaseState implements State {
 
 	protected int sign;
-	protected int value;
+	protected double value;
 	protected double point;
 	
 	public BaseState() {
@@ -31,7 +31,7 @@ public abstract class BaseState implements State {
 	 * @return value
 	 */
 	@Override
-	public int getValue() {
+	public double getValue() {
 		// TODO Auto-generated method stub
 		return value;
 	}
