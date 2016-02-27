@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author Drew Rife
  *
  */
-public class testBaseState {
+public class TestBaseState {
 
 	/**
 	 * test for the initialization of

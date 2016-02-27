@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-public class testStartState {
+public class TestStartState {
 
 	/**
 	 * Tests initialization of 

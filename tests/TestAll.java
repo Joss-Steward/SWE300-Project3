@@ -8,9 +8,10 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
 		{
-			testBaseState.class,
-			testDecimalState.class,
-			testIntegerState.class,
-			testStartState.class
+			TestBaseState.class,
+			TestDecimalState.class,
+			TestIntegerState.class,
+			TestStartState.class,
+			TestManager.class
 		})
 public class TestAll {}

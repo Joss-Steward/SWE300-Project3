@@ -7,7 +7,7 @@ import org.junit.Test;
  * 
  * Tests the functinality of integer state
  */
-public class testIntegerState {
+public class TestIntegerState {
 
 	/**
 	 * tests initialization of

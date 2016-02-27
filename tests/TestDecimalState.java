@@ -6,7 +6,7 @@ import org.junit.Test;
  *
  * Tests the functionality of Decimal State
  */
-public class testDecimalState {
+public class TestDecimalState {
 
 	/**
 	 * Tests initialization of 
