@@ -10,9 +10,10 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses(
 		{
 			TestBaseState.class,
-			TestDecimalState.class,
-			TestIntegerState.class,
 			TestStartState.class,
+			TestIntegerState.class,
+			TestDecimalState.class,
+			TestEndState.class,
 			TestManager.class
 		})
 public class TestAll {}
