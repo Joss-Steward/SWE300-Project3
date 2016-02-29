@@ -1,6 +1,7 @@
 /**
  * @author Joss Steward
  *
+ * Oversees running the state machine
  */
 public class Manager {
 	/**

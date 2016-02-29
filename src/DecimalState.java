@@ -2,7 +2,7 @@
  * 
  * @author Drew Rife, Joss Steward, Brad Olah
  *
- * Valid transitions; DecimalState, EndState
+ * Valid transitions: DecimalState, EndState
  */
 public class DecimalState extends BaseState {
 	

@@ -67,16 +67,33 @@ public class TestStartState {
 	 * 
 	 */
 	@Test
-	public void testNegativeInteger() {
+	public void testNegativeSign() {
 		State testState = new StartState();
 		State nextState = testState.evaluate('-');
-		assertTrue(nextState instanceof StartState);
+		assertTrue(nextState instanceof IntegerState);
 		assertEquals(-1, nextState.getSign());
 		assertEquals(0, nextState.getValue(), 0.0001);
 		
 		nextState = nextState.evaluate('5');
 		assertTrue(nextState instanceof IntegerState);
 		assertEquals(-1, nextState.getSign());
+		assertEquals(5, nextState.getValue(), 0.0001);
+	}
+	
+	/**
+	 * 
+	 */
+	@Test
+	public void testPlusSign() {
+		State testState = new StartState();
+		State nextState = testState.evaluate('+');
+		assertTrue(nextState instanceof IntegerState);
+		assertEquals(1, nextState.getSign());
+		assertEquals(0, nextState.getValue(), 0.0001);
+		
+		nextState = nextState.evaluate('5');
+		assertTrue(nextState instanceof IntegerState);
+		assertEquals(1, nextState.getSign());
 		assertEquals(5, nextState.getValue(), 0.0001);
 	}
 }
