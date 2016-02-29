@@ -14,12 +14,16 @@ public class Manager {
 	public static double ConvertToDecimal(String inputString){
 		State currentState = new StartState();
 		
+		/*
+		 * Java stores the string length in the string object, so it won't
+		 *  hit a null-terminating character in the for-each loop. By adding
+		 *  one to the end of the string, we can nicely avoid making modifications
+		 *  to the state machine. 
+		 */
+		inputString = inputString + '\0';
+		
 		for (char character : inputString.toCharArray()){
 			currentState = currentState.evaluate(character);
-			
-			if(currentState instanceof EndState){
-				break;
-			}
 		}
 		
 		return currentState.getValue();

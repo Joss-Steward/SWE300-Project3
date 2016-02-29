@@ -11,7 +11,7 @@ public class TestManager {
 	 */
 	@Test
 	public void testIntegerConversion() {
-		assertEquals(200, Manager.ConvertToDecimal("200"), 0.0001);
+		assertEquals(200.0f, Manager.ConvertToDecimal("200"), 0.0001);
 	}
 	
 	/**
@@ -20,6 +20,22 @@ public class TestManager {
 	@Test
 	public void testDecimalConversion() {
 		assertEquals(200.05, Manager.ConvertToDecimal("200.05"), 0.0001);
+	}
+	
+	/**
+	 * Test converting a negative integer string into an integer.
+	 */
+	@Test
+	public void testNegativeConversion() {
+		assertEquals(-200.0f, Manager.ConvertToDecimal("-200"), 0.0001);
+	}
+
+	/**
+	 * Test converting an integer string with a leading '+' into an integer.
+	 */
+	@Test
+	public void testLeadingPlusConversion() {
+		assertEquals(200.0f, Manager.ConvertToDecimal("+200"), 0.0001);
 	}
 	
 	/**

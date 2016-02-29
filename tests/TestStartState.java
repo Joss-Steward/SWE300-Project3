@@ -64,7 +64,7 @@ public class TestStartState {
 	}
 	
 	/**
-	 * 
+	 * Test a leading '-' sign
 	 */
 	@Test
 	public void testNegativeSign() {
@@ -81,7 +81,7 @@ public class TestStartState {
 	}
 	
 	/**
-	 * 
+	 * Test a leading '+' sign
 	 */
 	@Test
 	public void testPlusSign() {
