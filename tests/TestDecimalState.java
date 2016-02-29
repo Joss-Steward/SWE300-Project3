@@ -47,6 +47,7 @@ public class TestDecimalState {
 	
 	/**
 	 * tests for invalid input
+	 * @author Drew Rife, Joss Steward, Brad Olah
 	 */
 	public void testInvalidInput() {
 		State testState = new DecimalState(-1, 5, .1);
