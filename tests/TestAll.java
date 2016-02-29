@@ -2,8 +2,9 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * @author drew
+ * @author Drew Rife and Joss Steward
  *
+ * Runs all tests
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses(
