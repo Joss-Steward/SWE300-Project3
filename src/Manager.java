@@ -4,6 +4,7 @@
  * Oversees running the state machine
  */
 public class Manager {
+
 	/**
 	 * This method takes a string and returns the decimal 
 	 *  representation of the string.  If the string cannot be
@@ -11,8 +12,7 @@ public class Manager {
 	 * @param inputString
 	 * @return The decimal representation of the number in the string.
 	 */
-	public static double ConvertToDecimal(String inputString){
-		State currentState = new StartState();
+	public double ConvertToDecimal(String inputString){
 		
 		/*
 		 * Java stores the string length in the string object, so it won't

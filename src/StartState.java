@@ -19,7 +19,6 @@ public class StartState extends BaseState{
 	 */
 	@Override
 	public State evaluate(char input) {
-		State nextState = null;
 		
 		if(Character.isDigit(input)){
 			// Transition to IntegerState
@@ -38,12 +37,16 @@ public class StartState extends BaseState{
 		}
 		else if(input == '+') {
 			// Transition to IntegerState
-			nextState = new IntegerState(sign, value);
+			Context.currentState = new IntegerState(sign, value);
 		}
 		else {
 			// Transition to EndState
 			nextState = new EndState(value);
 		}
 		return nextState;
+	}
+	
+	public void setState() {
+		
 	}
 }
