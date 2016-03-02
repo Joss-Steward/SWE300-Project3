@@ -19,34 +19,31 @@ public class StartState extends BaseState{
 	 */
 	@Override
 	public State evaluate(char input) {
+		State nextState = null;
 		
 		if(Character.isDigit(input)){
 			// Transition to IntegerState
 			value = input - '0';
-			Context.currentState = new IntegerState(sign, value);
+			nextState = new IntegerState(sign, value);
 		}
 		else if(input == '.') {
 			// Transition to DecimalState
 			point = .1;
-			Context.currentState = new DecimalState(sign, value, point);			
+			nextState = new DecimalState(sign, value, point);			
 		}
 		else if(input == '-') {
 			// Transition to IntegerState
 			sign = -1;
-			Context.currentState = new IntegerState(sign, value);
+			nextState = new IntegerState(sign, value);
 		}
 		else if(input == '+') {
 			// Transition to IntegerState
-			Context.currentState = new IntegerState(sign, value);
+			nextState = new IntegerState(sign, value);
 		}
 		else {
 			// Transition to EndState
-			Context.currentState = Context.EndState.setState(value);   //new EndState(value); 
+			nextState = new EndState(value);
 		}
-		return Context.currentState;
-	}
-	
-	public void setState() {
-		
+		return nextState;
 	}
 }
