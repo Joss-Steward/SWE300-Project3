@@ -23,17 +23,17 @@ public class StartState extends BaseState{
 		if(Character.isDigit(input)){
 			// Transition to IntegerState
 			value = input - '0';
-			nextState = new IntegerState(sign, value);
+			Context.currentState = new IntegerState(sign, value);
 		}
 		else if(input == '.') {
 			// Transition to DecimalState
 			point = .1;
-			nextState = new DecimalState(sign, value, point);			
+			Context.currentState = new DecimalState(sign, value, point);			
 		}
 		else if(input == '-') {
 			// Transition to IntegerState
 			sign = -1;
-			nextState = new IntegerState(sign, value);
+			Context.currentState = new IntegerState(sign, value);
 		}
 		else if(input == '+') {
 			// Transition to IntegerState
@@ -41,9 +41,9 @@ public class StartState extends BaseState{
 		}
 		else {
 			// Transition to EndState
-			nextState = new EndState(value);
+			Context.currentState = Context.EndState.setState(value);   //new EndState(value); 
 		}
-		return nextState;
+		return Context.currentState;
 	}
 	
 	public void setState() {
