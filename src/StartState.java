@@ -18,31 +18,31 @@ public class StartState extends BaseState{
 	 * 'Other' -> EndState
 	 */
 	@Override
-	public State evaluate(char input) {
-		State nextState = null;
+	public StateEnum evaluate(char input) {
+		StateEnum nextState = null;
 		
 		if(Character.isDigit(input)){
 			// Transition to IntegerState
 			value = input - '0';
-			nextState = new IntegerState(sign, value);
+			nextState = StateEnum.IntegerState;
 		}
 		else if(input == '.') {
 			// Transition to DecimalState
 			point = .1;
-			nextState = new DecimalState(sign, value, point);			
+			nextState = StateEnum.DecimalState;			
 		}
 		else if(input == '-') {
 			// Transition to IntegerState
 			sign = -1;
-			nextState = new IntegerState(sign, value);
+			nextState = StateEnum.IntegerState;
 		}
 		else if(input == '+') {
 			// Transition to IntegerState
-			nextState = new IntegerState(sign, value);
+			nextState = StateEnum.IntegerState;
 		}
 		else {
 			// Transition to EndState
-			nextState = new EndState(value);
+			nextState = StateEnum.EndState;
 		}
 		return nextState;
 	}

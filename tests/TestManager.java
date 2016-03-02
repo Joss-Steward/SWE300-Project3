@@ -11,7 +11,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testIntegerConversion() {
-		assertEquals(200.0f, Manager.ConvertToDecimal("200"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(200.0f, manager.ConvertToDecimal("200"), 0.0001);
 	}
 	
 	/**
@@ -19,7 +20,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testDecimalConversion() {
-		assertEquals(200.05, Manager.ConvertToDecimal("200.05"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(200.05, manager.ConvertToDecimal("200.05"), 0.0001);
 	}
 	
 	/**
@@ -27,7 +29,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testNegativeConversion() {
-		assertEquals(-200.0f, Manager.ConvertToDecimal("-200"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(-200.0f, manager.ConvertToDecimal("-200"), 0.0001);
 	}
 
 	/**
@@ -35,7 +38,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testLeadingPlusConversion() {
-		assertEquals(200.0f, Manager.ConvertToDecimal("+200"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(200.0f, manager.ConvertToDecimal("+200"), 0.0001);
 	}
 	
 	/**
@@ -43,7 +47,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testInvalidConversion() {
-		assertEquals(0, Manager.ConvertToDecimal("200.05.0004"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(0, manager.ConvertToDecimal("200.05.0004"), 0.0001);
 	}
 	
 	/**
@@ -51,7 +56,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testInvalidConversion2() {
-		assertEquals(0, Manager.ConvertToDecimal("abc123"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(0, manager.ConvertToDecimal("abc123"), 0.0001);
 	}
 
 	/**
@@ -59,7 +65,8 @@ public class TestManager {
 	 */
 	@Test
 	public void testInvalidConversion3() {
-		assertEquals(0, Manager.ConvertToDecimal("123abc"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(0, manager.ConvertToDecimal("123abc"), 0.0001);
 	}
 
 	/**
@@ -67,6 +74,7 @@ public class TestManager {
 	 */
 	@Test
 	public void testInvalidConversion4() {
-		assertEquals(0, Manager.ConvertToDecimal(" 123"), 0.0001);
+		Manager manager = new Manager();
+		assertEquals(0, manager.ConvertToDecimal(" 123"), 0.0001);
 	}
 }

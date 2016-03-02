@@ -13,7 +13,10 @@ public class TestEndState {
 	 */
 	@Test
 	public void testInitialization() {
-		State testState = new EndState(10.0);
+		State testState = new EndState();
+		
+		testState.setValue(10.0);
+		
 		assertEquals(10.0f, testState.getValue(), 0.0001);	
 	}
 
@@ -25,12 +28,15 @@ public class TestEndState {
 	 */
 	@Test
 	public void testTransitionWithDigit() {
-		State testState = new EndState(10.0f);
+		State testState = new EndState();
+		
+		testState.setValue(10.0);
 		assertEquals(10.0f, testState.getValue(), 0.0001);	
 		
-		State nextState = testState.evaluate('0');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
+		StateEnum nextState = testState.evaluate('0');
+		
+		assertEquals(nextState, StateEnum.EndState);
+		assertEquals(0, testState.getValue(), 0.0001);
 	}
 
 	/**
@@ -41,12 +47,15 @@ public class TestEndState {
 	 */
 	@Test
 	public void testTransitionWithNonDigit() {
-		State testState = new EndState(10.0f);
+		State testState = new EndState();
+		
+		testState.setValue(10.0);		
 		assertEquals(10.0f, testState.getValue(), 0.0001);	
 		
-		State nextState = testState.evaluate('f');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
+		StateEnum nextState = testState.evaluate('f');
+		
+		assertEquals(nextState, StateEnum.EndState);
+		assertEquals(0, testState.getValue(), 0.0001);
 	}
 
 	/**
@@ -57,12 +66,15 @@ public class TestEndState {
 	 */
 	@Test
 	public void testTransitionWithTerminator() {
-		State testState = new EndState(10.0f);
-		assertEquals(10.0f, testState.getValue(), 0.0001);	
+		State testState = new EndState();
 		
-		State nextState = testState.evaluate('\0');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
+		testState.setValue(10.0);
+		assertEquals(10.0f, testState.getValue(), 0.0001);	
+
+		StateEnum nextState = testState.evaluate('\0');
+		
+		assertEquals(nextState, StateEnum.EndState);
+		assertEquals(0, testState.getValue(), 0.0001);
 	}
 
 }

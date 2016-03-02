@@ -25,12 +25,13 @@ public class TestStartState {
 	 */
 	@Test
 	public void testInteger() {
-		State testState = new StartState();
-		State nextState = testState.evaluate('0');
-		assertTrue(nextState instanceof IntegerState);
-		assertEquals(0, nextState.getValue(), 0.0001);
-		assertEquals(1, nextState.getSign());
-		assertEquals(1.0f, nextState.getPoint(), 0.0001);
+		State testState = new StartState();		
+		StateEnum nextState = testState.evaluate('1');
+		
+		assertEquals(nextState, StateEnum.IntegerState);
+		assertEquals(1, testState.getValue(), 0.0001);
+		assertEquals(1, testState.getSign());
+		assertEquals(1.0f, testState.getPoint(), 0.0001);
 	}
 	
 	/**
@@ -40,11 +41,13 @@ public class TestStartState {
 	@Test
 	public void testDecimal() {
 		State testState = new StartState();
-		State nextState = testState.evaluate('.');
-		assertTrue(nextState instanceof DecimalState);
-		assertEquals(0, nextState.getValue(), 0.0001);
-		assertEquals(1, nextState.getSign());
-		assertEquals(0.1f, nextState.getPoint(), 0.0001);
+		StateEnum nextState = testState.evaluate('.');
+		
+		assertEquals(nextState, StateEnum.DecimalState);
+		
+		assertEquals(0, testState.getValue(), 0.0001);
+		assertEquals(1, testState.getSign());
+		assertEquals(0.1f, testState.getPoint(), 0.0001);
 	}
 	
 	/**
@@ -54,13 +57,10 @@ public class TestStartState {
 	@Test
 	public void testNonIntegerOrDecimal() {
 		State testState = new StartState();
-		State nextState = testState.evaluate('a');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
-		
-		nextState = testState.evaluate('}');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
+		StateEnum nextState = testState.evaluate('a');
+
+		assertEquals(nextState, StateEnum.EndState);		
+		assertEquals(0, testState.getValue(), 0.0001);		
 	}
 	
 	/**
@@ -69,15 +69,13 @@ public class TestStartState {
 	@Test
 	public void testNegativeSign() {
 		State testState = new StartState();
-		State nextState = testState.evaluate('-');
-		assertTrue(nextState instanceof IntegerState);
-		assertEquals(-1, nextState.getSign());
-		assertEquals(0, nextState.getValue(), 0.0001);
 		
-		nextState = nextState.evaluate('5');
-		assertTrue(nextState instanceof IntegerState);
-		assertEquals(-1, nextState.getSign());
-		assertEquals(5, nextState.getValue(), 0.0001);
+		StateEnum nextState = testState.evaluate('-');
+		
+		assertEquals(nextState, StateEnum.IntegerState);
+		
+		assertEquals(-1, testState.getSign());
+		assertEquals(0, testState.getValue(), 0.0001);		
 	}
 	
 	/**
@@ -86,14 +84,12 @@ public class TestStartState {
 	@Test
 	public void testPlusSign() {
 		State testState = new StartState();
-		State nextState = testState.evaluate('+');
-		assertTrue(nextState instanceof IntegerState);
-		assertEquals(1, nextState.getSign());
-		assertEquals(0, nextState.getValue(), 0.0001);
 		
-		nextState = nextState.evaluate('5');
-		assertTrue(nextState instanceof IntegerState);
-		assertEquals(1, nextState.getSign());
-		assertEquals(5, nextState.getValue(), 0.0001);
+		StateEnum nextState = testState.evaluate('+');
+		
+		assertEquals(nextState, StateEnum.IntegerState);
+		
+		assertEquals(1, testState.getSign());
+		assertEquals(0, testState.getValue(), 0.0001);
 	}
 }

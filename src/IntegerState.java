@@ -5,16 +5,11 @@
  * Valid transitions: IntegerState, DecimalState, EndState
  */
 public class IntegerState extends BaseState {
-	/**
-	 * Generic Constructor
-	 * @param sign
-	 * @param value
-	 */
-	public IntegerState(int sign, double value) {
-		this.sign = sign;
-		this.value = value;
-	}
 	
+	public IntegerState() {
+		// Does Nothing
+	}
+
 	/**
 	 * takes a character as an input and
 	 * transitions to one of the following states:
@@ -23,29 +18,29 @@ public class IntegerState extends BaseState {
 	 * 'Other' -> EndState
 	 * '\0' -> EndState
 	 */
-	public State evaluate(char input) {
-		State nextState = null;
+	public StateEnum evaluate(char input) {
+		StateEnum nextState = null;
 		
 		if(Character.isDigit(input)) {
 			// Apply the next digit and Transition to IntegerState
 			value *= 10;
 			value += input - '0';
-			nextState = new IntegerState(sign, value);
+			nextState = StateEnum.IntegerState;
 		}
 		else if(input == '.') {
 			// Set point to 0.1 and transition to DecimalState
 			point = .1;
-			nextState = new DecimalState(sign, value, point);
+			nextState = StateEnum.DecimalState;
 		}
 		else if(input == '\0') {
 			// We've hit the end, so transition to EndState
 			value *= sign;
-			nextState = new EndState(value);
+			nextState = StateEnum.EndState;
 		}
 		else {
 			// Otherwise, transition to EndState
 			value = 0;
-			nextState = new EndState(value);
+			nextState = StateEnum.EndState;
 		}
 		
 		// Return the new state

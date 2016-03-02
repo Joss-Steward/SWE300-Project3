@@ -9,29 +9,23 @@ import org.junit.Test;
 public class TestDecimalState {
 
 	/**
-	 * Tests initialization of 
-	 * sign, value, and point
-	 * @author Drew Rife and Brad Olah
-	 */
-	@Test
-	public void testInitialization() {
-		State testState = new DecimalState(1, 0, .1);
-		assertEquals(1, testState.getSign());
-		assertEquals(0, testState.getValue(), 0.0001);
-		assertEquals(0.1f, testState.getPoint(), 0.0001);
-	}
-
-	/**
 	 * tests an integer input
-	 * @author Drew Rife and Brad Olah
+	 * @author Drew Rife and Brad Olah and Joss Steward
 	 */
 	@Test
 	public void testIntegerInput() {
-		State testState = new DecimalState(1, 5, .1);
-		State nextState = testState.evaluate('2');
-		assertTrue(nextState instanceof DecimalState);
-		assertEquals(5.2, nextState.getValue(), 0.0001);
-		assertEquals(0.01, nextState.getPoint(), 0.0001);
+		State testState = new DecimalState();
+		
+		testState.setSign(1);
+		testState.setValue(5);
+		testState.setPoint(0.1);
+		
+		StateEnum nextState = testState.evaluate('2');
+		
+		assertEquals(nextState, StateEnum.DecimalState);
+		
+		assertEquals(5.2, testState.getValue(), 0.0001);
+		assertEquals(0.01, testState.getPoint(), 0.0001);
 	}
 	
 	/**
@@ -39,10 +33,16 @@ public class TestDecimalState {
 	 * @author Drew Rife and Brad Olah
 	 */
 	public void testNullTerminator() {
-		State testState = new DecimalState(-1, 5, .1);
-		State nextState = testState.evaluate('\0');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(-5, nextState.getValue(), 0.0001);
+		State testState = new DecimalState();
+		
+		testState.setSign(-1);
+		testState.setValue(5);
+		testState.setPoint(0.1);
+		
+		StateEnum nextState = testState.evaluate('\0');
+
+		assertEquals(nextState, StateEnum.EndState);
+		assertEquals(-5, testState.getValue(), 0.0001);
 	}
 	
 	/**
@@ -50,9 +50,15 @@ public class TestDecimalState {
 	 * @author Drew Rife, Joss Steward, Brad Olah
 	 */
 	public void testInvalidInput() {
-		State testState = new DecimalState(-1, 5, .1);
-		State nextState = testState.evaluate('~');
-		assertTrue(nextState instanceof EndState);
-		assertEquals(0, nextState.getValue(), 0.0001);
+		State testState = new DecimalState();
+		
+		testState.setSign(-1);
+		testState.setValue(5);
+		testState.setPoint(0.1);
+		
+		StateEnum nextState = testState.evaluate('~');
+
+		assertEquals(nextState, StateEnum.EndState);
+		assertEquals(0, testState.getValue(), 0.0001);
 	}
 }
